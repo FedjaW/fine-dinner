@@ -10,4 +10,8 @@
     <ProjectReference Include="..\FineDinner.Domain\FineDinner.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="1.0.0" />
+  </ItemGroup>
+
 </Project>

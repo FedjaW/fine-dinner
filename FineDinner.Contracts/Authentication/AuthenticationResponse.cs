@@ -1,4 +1,3 @@
-
 namespace FineDinner.Contracts.Authentication;
 
 public record AuthenticationResponse(

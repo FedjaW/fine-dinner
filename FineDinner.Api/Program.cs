@@ -1,6 +1,13 @@
 // Dependency injection
+using FineDinner.Application;
+using FineDinner.Infrastructure;
+
 var builder = WebApplication.CreateBuilder(args);
 {
+    builder.Services.
+        AddApplication().
+        AddInfrastructure();
+
     builder.Services.AddControllers();
     builder.Services.AddSwaggerGen();
 }
