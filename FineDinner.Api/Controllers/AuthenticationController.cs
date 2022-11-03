@@ -8,7 +8,6 @@ namespace FineDinner.Api.Controllers;
 [Route("auth")]
 public class AuthenticationController : ControllerBase
 {
-
     private readonly IAuthenticationService _authenticationService;
 
     public AuthenticationController(IAuthenticationService authenticationService)
