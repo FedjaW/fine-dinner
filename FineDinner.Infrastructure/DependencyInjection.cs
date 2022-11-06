@@ -23,3 +23,13 @@ public static class DependencyInjection
         return services;
     }
 }
+
+// --------------------------------------------------------------------------------------------------------
+// Learnings: Singleton vs. Static class
+// --------------------------------------------------------------------------------------------------------
+// A singleton allows access to a single created instance 
+// - that instance (or rather, a reference to that instance) can be passed as a parameter to other methods,
+// and treated as a normal object.
+
+// A static class allows only static methods.
+// --------------------------------------------------------------------------------------------------------
