@@ -48,6 +48,6 @@ public class AuthenticationController : ControllerBase
             authResult.Email,
             authResult.token);
 
-        return this.Ok(request);
+        return this.Ok(response);
     }
 }

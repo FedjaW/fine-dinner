@@ -1,7 +1,7 @@
-// Dependency injection
 using FineDinner.Application;
 using FineDinner.Infrastructure;
 
+# region Dependency Injection
 var builder = WebApplication.CreateBuilder(args);
 {
     builder.Services.
@@ -11,8 +11,9 @@ var builder = WebApplication.CreateBuilder(args);
     builder.Services.AddControllers();
     builder.Services.AddSwaggerGen();
 }
+# endregion
 
-// Request pipeline
+# region Request Pipeline
 var app = builder.Build();
 {
     if (app.Environment.IsDevelopment())
@@ -25,3 +26,4 @@ var app = builder.Build();
     app.MapControllers();
     app.Run();
 }
+#endregion
