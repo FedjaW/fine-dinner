@@ -34,9 +34,9 @@ public class AuthenticationService : IAuthenticationService
         _userRepository.AddUser(newUser);
 
         // 3. Create JWT token
-        var token = _jwtTokenGenerator.GenerateToken(newUser.Id, firstName, lastName);
+        var token = _jwtTokenGenerator.GenerateToken(newUser);
 
-        return new AuthenticationResult(newUser.Id, firstName, lastName, email, token);
+        return new AuthenticationResult(newUser, token);
     }
 
     public AuthenticationResult Login(string email, string password)
@@ -55,8 +55,8 @@ public class AuthenticationService : IAuthenticationService
         }
 
         // 3. Create a JWT token
-        var token = _jwtTokenGenerator.GenerateToken(user.Id, user.FirstName, user.LastName);
+        var token = _jwtTokenGenerator.GenerateToken(user);
 
-        return new AuthenticationResult(user.Id, user.FirstName, user.LastName, email, token);
+        return new AuthenticationResult(user, token);
     }
 }
