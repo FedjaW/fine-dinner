@@ -1,3 +1,4 @@
+using FineDinner.Api.Middleware;
 using FineDinner.Application;
 using FineDinner.Infrastructure;
 
@@ -22,6 +23,7 @@ var app = builder.Build();
         app.UseSwaggerUI();
     }
 
+    app.UseExceptionHandler("/error");
     app.UseHttpsRedirection();
     app.MapControllers();
     app.Run();
