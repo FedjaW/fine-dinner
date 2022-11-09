@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Diagnostics;
+using FineDinner.Application.Common.Errors;
 
 namespace FineDinner.Api.Controllers;
 
@@ -11,15 +12,14 @@ public class ErrorsController : ControllerBase
     {
         var context = HttpContext.Features.Get<IExceptionHandlerFeature>();
         var exception = context?.Error;
-        var code = 500; // Internal Server Error by default
 
-        // Handle http status code of custom exceptions (examples)
-        // if (exception is NotFoundException) code = 404; // Not Found
-        // else if (exception is UnauthException) code = 401; // Unauthorized
+        var (statusCode, message) = exception switch
+        {
+            IServiceException serviceException => ((int)serviceException.StatusCode, serviceException.ErrorMessage),
+            _ => (StatusCodes.Status500InternalServerError, "An unexcepted error occured.")
+        };
 
-        return Problem(
-            title: exception?.Message,
-            statusCode: code);
+        return Problem(title: message, statusCode: statusCode);
     }
 }
 

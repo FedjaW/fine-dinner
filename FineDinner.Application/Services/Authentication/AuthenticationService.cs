@@ -1,3 +1,4 @@
+using FineDinner.Application.Common.Errors;
 using FineDinner.Application.Common.Interfaces.Authentication;
 using FineDinner.Application.Common.Interfaces.Persitence;
 using FineDinner.Domain.Entities;
@@ -20,7 +21,7 @@ public class AuthenticationService : IAuthenticationService
         // 1. Validate the user does not exist.
         if (_userRepository.GetUserByEmail(email) is not null)
         {
-            throw new Exception($"User with given email {email} does already exists.");
+            throw new DuplicateEmailException();
         }
 
         // 2. Create a user (generate a unique id) & persist to DB
