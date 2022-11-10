@@ -1,3 +1,4 @@
+using ErrorOr;
 using FineDinner.Application.Common.Errors;
 using FineDinner.Application.Common.Interfaces.Authentication;
 using FineDinner.Application.Common.Interfaces.Persitence;
@@ -16,12 +17,12 @@ public class AuthenticationService : IAuthenticationService
         _userRepository = userRepository;
     }
 
-    public AuthenticationResult Register(string firstName, string lastName, string email, string password)
+    public ErrorOr<AuthenticationResult> Register(string firstName, string lastName, string email, string password)
     {
         // 1. Validate the user does not exist.
         if (_userRepository.GetUserByEmail(email) is not null)
         {
-            throw new DuplicateEmailException();
+            return Errors.User.DuplicatedEmail;
         }
 
         // 2. Create a user (generate a unique id) & persist to DB
@@ -40,19 +41,19 @@ public class AuthenticationService : IAuthenticationService
         return new AuthenticationResult(newUser, token);
     }
 
-    public AuthenticationResult Login(string email, string password)
+    public ErrorOr<AuthenticationResult> Login(string email, string password)
     {
         // 1. Validate the user exists.
         var user = _userRepository.GetUserByEmail(email);
         if (user is null)
         {
-            throw new Exception($"User with given email {email} does not exist."); // todo: this message is a vector for hackers. Change it!
+            return Errors.Authentication.InvalidCredentials;
         }
 
         // 2. Validate the Password is correct.
         if (user.Password != password)
         {
-            throw new Exception("Invalid password.");
+            return Errors.Authentication.InvalidCredentials;
         }
 
         // 3. Create a JWT token

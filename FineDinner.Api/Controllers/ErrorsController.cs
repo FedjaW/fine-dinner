@@ -4,7 +4,7 @@ using FineDinner.Application.Common.Errors;
 
 namespace FineDinner.Api.Controllers;
 
-public class ErrorsController : ControllerBase
+public class ErrorsController : ApiController
 {
     [ApiExplorerSettings(IgnoreApi = true)]
     [HttpPost("/error")]
