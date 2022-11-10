@@ -1,5 +1,4 @@
 using ErrorOr;
-using FineDinner.Application.Common.Errors;
 using FineDinner.Application.Common.Interfaces.Authentication;
 using FineDinner.Application.Common.Interfaces.Persitence;
 using FineDinner.Domain.Entities;

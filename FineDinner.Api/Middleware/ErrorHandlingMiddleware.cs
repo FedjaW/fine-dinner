@@ -5,6 +5,7 @@ namespace FineDinner.Api.Middleware;
 
 // ATTENTION!
 // Just left this here as an example of what a different approach to error handling looks like.
+// The currently used apporach is ErrorOr instead of exceptions via middleware!
 [Obsolete]
 public class ErrorHandlingMiddleware
 {
