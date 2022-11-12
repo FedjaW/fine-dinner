@@ -1,4 +1,3 @@
-using FineDinner.Api.Middleware;
 using FineDinner.Application;
 using FineDinner.Infrastructure;
 
