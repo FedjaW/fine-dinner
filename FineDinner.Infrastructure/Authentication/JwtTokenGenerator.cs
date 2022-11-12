@@ -11,7 +11,6 @@ namespace FineDinner.Infrastructure.Authentication;
 
 public class JwtTokenGenerator : IJwtTokenGenerator
 {
-
     private readonly JwtSettings _jwtSettings;
     private readonly IDateTimeProvider _dateTimeProvider;
 

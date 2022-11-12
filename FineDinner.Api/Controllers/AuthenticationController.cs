@@ -1,5 +1,7 @@
 using ErrorOr;
-using FineDinner.Application.Services.Authentication;
+using FineDinner.Application.Services.Authentication.Commands;
+using FineDinner.Application.Services.Authentication.Common;
+using FineDinner.Application.Services.Authentication.Queries;
 using FineDinner.Contracts.Authentication;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,17 +10,21 @@ namespace FineDinner.Api.Controllers;
 [Route("auth")]
 public class AuthenticationController : ApiController
 {
-    private readonly IAuthenticationService _authenticationService;
+    private readonly IAuthenticationCommandService _authenticationCommandService;
+    private readonly IAuthenticationQueryService _authenticationQueryService;
 
-    public AuthenticationController(IAuthenticationService authenticationService)
+    public AuthenticationController(
+        IAuthenticationCommandService authenticationCommandService,
+        IAuthenticationQueryService authenticationQueryService)
     {
-        _authenticationService = authenticationService;
+        _authenticationCommandService = authenticationCommandService;
+        _authenticationQueryService = authenticationQueryService;
     }
 
     [HttpPost("register")]
     public IActionResult Register(RegisterRequest request)
     {
-        ErrorOr<AuthenticationResult> authResult = _authenticationService.Register(
+        ErrorOr<AuthenticationResult> authResult = _authenticationCommandService.Register(
             request.FirstName,
             request.LastName,
             request.Email,
@@ -33,7 +39,7 @@ public class AuthenticationController : ApiController
     [HttpPost("login")]
     public IActionResult Login(LoginRequest request)
     {
-        ErrorOr<AuthenticationResult> authResult = _authenticationService.Login(
+        ErrorOr<AuthenticationResult> authResult = _authenticationQueryService.Login(
             request.Email,
             request.Password);
 
