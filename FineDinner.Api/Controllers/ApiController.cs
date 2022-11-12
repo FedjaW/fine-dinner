@@ -6,9 +6,9 @@ namespace FineDinner.Api.Controllers;
 [ApiController]
 public class ApiController : ControllerBase
 {
-    protected IActionResult Problem(List<Error> errors)
+    protected IActionResult Problem(IEnumerable<Error> errors)
     {
-        var firstError = errors[0];
+        var firstError = errors.First();
         var statusCode = firstError.Type switch
         {
             ErrorType.Conflict => StatusCodes.Status409Conflict,
