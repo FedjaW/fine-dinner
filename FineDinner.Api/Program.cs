@@ -1,3 +1,4 @@
+using FineDinner.Api;
 using FineDinner.Application;
 using FineDinner.Infrastructure;
 
@@ -5,11 +6,9 @@ using FineDinner.Infrastructure;
 var builder = WebApplication.CreateBuilder(args);
 {
     builder.Services.
+        AddPresentation().
         AddApplication().
         AddInfrastructure(builder.Configuration);
-
-    builder.Services.AddControllers();
-    builder.Services.AddSwaggerGen();
 }
 # endregion
 
