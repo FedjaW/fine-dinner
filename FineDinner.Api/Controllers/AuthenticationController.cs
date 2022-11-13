@@ -1,8 +1,8 @@
-using ErrorOr;
-using FineDinner.Application.Services.Authentication.Commands;
-using FineDinner.Application.Services.Authentication.Common;
-using FineDinner.Application.Services.Authentication.Queries;
+using FineDinner.Application.Authentication.Commands.Register;
+using FineDinner.Application.Authentication.Common;
+using FineDinner.Application.Authentication.Queries.Login;
 using FineDinner.Contracts.Authentication;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FineDinner.Api.Controllers;
@@ -10,25 +10,25 @@ namespace FineDinner.Api.Controllers;
 [Route("auth")]
 public class AuthenticationController : ApiController
 {
-    private readonly IAuthenticationCommandService _authenticationCommandService;
-    private readonly IAuthenticationQueryService _authenticationQueryService;
+    // note: using the ISender instead of the IMediator interface
+    // to be I of SOLID (interface segregation principle)
+    private readonly ISender _mediator;
 
-    public AuthenticationController(
-        IAuthenticationCommandService authenticationCommandService,
-        IAuthenticationQueryService authenticationQueryService)
+    public AuthenticationController(ISender mediator)
     {
-        _authenticationCommandService = authenticationCommandService;
-        _authenticationQueryService = authenticationQueryService;
+        _mediator = mediator;
     }
 
     [HttpPost("register")]
-    public IActionResult Register(RegisterRequest request)
+    public async Task<IActionResult> Register(RegisterRequest request)
     {
-        ErrorOr<AuthenticationResult> authResult = _authenticationCommandService.Register(
+        var command = new RegisterCommand(
             request.FirstName,
             request.LastName,
             request.Email,
             request.Password);
+
+        var authResult = await _mediator.Send(command);
 
         return authResult.Match(
             authResult => Ok(MapAuthResult(authResult)),
@@ -37,11 +37,10 @@ public class AuthenticationController : ApiController
     }
 
     [HttpPost("login")]
-    public IActionResult Login(LoginRequest request)
+    public async Task<IActionResult> Login(LoginRequest request)
     {
-        ErrorOr<AuthenticationResult> authResult = _authenticationQueryService.Login(
-            request.Email,
-            request.Password);
+        var query = new LoginQuery(request.Email, request.Password);
+        var authResult = await _mediator.Send(query);
 
         return authResult.Match(
             authResult => Ok(MapAuthResult(authResult)),
