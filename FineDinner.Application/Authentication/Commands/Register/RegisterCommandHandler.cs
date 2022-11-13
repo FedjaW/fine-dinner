@@ -21,6 +21,8 @@ public class RegisterCommandHandler :
 
     public async Task<ErrorOr<AuthenticationResult>> Handle(RegisterCommand command, CancellationToken cancellationToken)
     {
+        await Task.CompletedTask; // to get rid of the warning that async method has no await
+
         // 1. Validate the user does not exist.
         if (_userRepository.GetUserByEmail(command.Email) is not null)
         {

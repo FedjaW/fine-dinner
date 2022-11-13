@@ -21,14 +21,16 @@ public class LoginQueryHandler :
 
     public async Task<ErrorOr<AuthenticationResult>> Handle(LoginQuery query, CancellationToken cancellationToken)
     {
-        // 1. Validate the user exists.
+        await Task.CompletedTask; // to get rid of the warning that async method has no await
+
+        // 1. Validate the user exists
         var user = _userRepository.GetUserByEmail(query.Email);
         if (user is null)
         {
             return Errors.Authentication.InvalidCredentials;
         }
 
-        // 2. Validate the Password is correct.
+        // 2. Validate the Password is correct
         if (user.Password != query.Password)
         {
             return Errors.Authentication.InvalidCredentials;
