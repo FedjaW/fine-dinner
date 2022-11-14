@@ -1,7 +1,4 @@
 using System.Reflection;
-using ErrorOr;
-using FineDinner.Application.Authentication.Commands.Register;
-using FineDinner.Application.Authentication.Common;
 using FineDinner.Application.Common.Behaviors;
 using FluentValidation;
 using MediatR;
@@ -15,9 +12,9 @@ public static class DependencyInjection
     {
         services.AddMediatR(typeof(DependencyInjection).Assembly);
 
-        services.AddScoped<
-            IPipelineBehavior<RegisterCommand, ErrorOr<AuthenticationResult>>,
-            ValidateRegisterCommandBehavior>();
+        services.AddScoped(
+            typeof(IPipelineBehavior<,>),
+            typeof(ValidationBehavior<,>));
 
         services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
