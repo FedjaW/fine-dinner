@@ -4,11 +4,13 @@ using FineDinner.Application.Authentication.Queries.Login;
 using FineDinner.Contracts.Authentication;
 using MapsterMapper;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FineDinner.Api.Controllers;
 
 [Route("auth")]
+[AllowAnonymous]
 public class AuthenticationController : ApiController
 {
     // note: using the ISender instead of the IMediator interface
