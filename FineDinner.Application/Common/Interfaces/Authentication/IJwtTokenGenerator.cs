@@ -1,4 +1,4 @@
-using FineDinner.Domain.Entities;
+using FineDinner.Domain.User;
 
 namespace FineDinner.Application.Common.Interfaces.Authentication;
 

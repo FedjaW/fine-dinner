@@ -2,7 +2,7 @@
 using FineDinner.Application.Authentication.Common;
 using FineDinner.Application.Common.Interfaces.Authentication;
 using FineDinner.Application.Common.Interfaces.Persitence;
-using FineDinner.Domain.Entities;
+using FineDinner.Domain.Common.Errors;
 using MediatR;
 
 namespace FineDinner.Application.Authentication.Queries.Login;

@@ -3,7 +3,7 @@ using System.Security.Claims;
 using System.Text;
 using FineDinner.Application.Common.Interfaces.Authentication;
 using FineDinner.Application.Common.Interfaces.Services;
-using FineDinner.Domain.Entities;
+using FineDinner.Domain.User;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 

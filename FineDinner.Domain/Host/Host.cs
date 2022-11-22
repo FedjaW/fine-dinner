@@ -13,7 +13,8 @@ public sealed class Host : AggregateRoot<HostId>
     public DateTime CreatedDateTime { get; }
     public DateTime UpdatedDateTime { get; }
 
-    private Host(HostId hostId,
+    private Host(
+        HostId hostId,
         string firstName,
         string lastName,
         string profileImage,
@@ -30,7 +31,6 @@ public sealed class Host : AggregateRoot<HostId>
         UpdatedDateTime = updatedDateTime;
     }
 
-
     public static Host Create(
         string firstName,
         string lastName,
@@ -41,8 +41,8 @@ public sealed class Host : AggregateRoot<HostId>
     {
         return new Host(
             HostId.CreateUnique(),
-            firstName, 
-            lastName, 
+            firstName,
+            lastName,
             profileImage,
             averageRating,
             DateTime.UtcNow,

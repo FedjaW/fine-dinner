@@ -2,12 +2,13 @@
 using FineDinner.Application.Authentication.Common;
 using FineDinner.Application.Common.Interfaces.Authentication;
 using FineDinner.Application.Common.Interfaces.Persitence;
-using FineDinner.Domain.Entities;
+using FineDinner.Domain.Common.Errors;
+using FineDinner.Domain.User;
 using MediatR;
 
 namespace FineDinner.Application.Authentication.Commands.Register;
 
-public class RegisterCommandHandler : 
+public class RegisterCommandHandler :
     IRequestHandler<RegisterCommand, ErrorOr<AuthenticationResult>>
 {
     private readonly IJwtTokenGenerator _jwtTokenGenerator;
@@ -30,13 +31,14 @@ public class RegisterCommandHandler :
         }
 
         // 2. Create a user (generate a unique id) & persist to DB
-        var newUser = new User
-        {
-            FirstName = command.FirstName,
-            LastName = command.LastName,
-            Email = command.Email,
-            Password = command.Password
-        };
+        var newUser = User.Create(
+            command.FirstName,
+             command.LastName,
+             command.Email,
+             command.Password,
+             DateTime.UtcNow,
+             DateTime.UtcNow
+        );
         _userRepository.AddUser(newUser);
 
         // 3. Create JWT token

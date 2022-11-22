@@ -1,6 +1,6 @@
 using ErrorOr;
 
-namespace FineDinner.Domain.Entities;
+namespace FineDinner.Domain.Common.Errors;
 
 public static partial class Errors
 {
