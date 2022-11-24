@@ -3,7 +3,7 @@ using FineDinner.Application.Authentication.Common;
 using FineDinner.Application.Common.Interfaces.Authentication;
 using FineDinner.Application.Common.Interfaces.Persitence;
 using FineDinner.Domain.Common.Errors;
-using FineDinner.Domain.User;
+using FineDinner.Domain.UserAggregate;
 using MediatR;
 
 namespace FineDinner.Application.Authentication.Commands.Register;

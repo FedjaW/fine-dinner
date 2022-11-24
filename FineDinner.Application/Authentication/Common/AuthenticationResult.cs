@@ -1,4 +1,4 @@
-﻿using FineDinner.Domain.User;
+﻿using FineDinner.Domain.UserAggregate;
 
 namespace FineDinner.Application.Authentication.Common;
 

@@ -1,5 +1,5 @@
 using FineDinner.Application.Common.Interfaces.Persitence;
-using FineDinner.Domain.User;
+using FineDinner.Domain.UserAggregate;
 
 namespace FineDinner.Infrastructure.Persistence;
 
