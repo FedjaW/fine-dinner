@@ -35,9 +35,7 @@ public sealed class Host : AggregateRoot<HostId>
         string firstName,
         string lastName,
         string profileImage,
-        AverageRating averageRating,
-        DateTime createdDateTime,
-        DateTime updatedDateTime)
+        AverageRating averageRating)
     {
         return new Host(
             HostId.CreateUnique(),

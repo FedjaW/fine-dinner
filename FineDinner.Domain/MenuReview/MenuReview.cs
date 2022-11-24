@@ -17,7 +17,7 @@ public sealed class MenuReview : AggregateRoot<MenuReviewId>
     public string Comment { get; }
 
     public HostId HostId { get { return _hostId; } }
-    public MenuId MenuId { get { return _menuId; } }    
+    public MenuId MenuId { get { return _menuId; } }
     public GuestId GuestId { get { return _guestId; } }
     public DinnerId DinnerId { get { return _dinnerId; } }
 
