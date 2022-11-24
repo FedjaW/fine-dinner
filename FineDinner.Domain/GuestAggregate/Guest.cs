@@ -32,7 +32,7 @@ public sealed class Guest : AggregateRoot<GuestId>
     public DateTime UpdatedDateTime { get; }
 
     private Guest(
-        GuestId menuId,
+        GuestId guestId,
         string firstName,
         string lastName,
         string profileImage,
@@ -40,7 +40,7 @@ public sealed class Guest : AggregateRoot<GuestId>
         UserId userId,
         DateTime createdDateTime,
         DateTime updatedDateTime)
-        : base(menuId)
+        : base(guestId)
     {
         FirstName = firstName;
         LastName = lastName;
