@@ -1,6 +1,7 @@
 ﻿using FineDinner.Domain.Bill.ValueObjects;
 using FineDinner.Domain.Common.Models;
 using FineDinner.Domain.Dinner.ValueObjects;
+using FineDinner.Domain.Guest.ValueObjects;
 
 namespace FineDinner.Domain.Dinner.Entities;
 
@@ -38,7 +39,7 @@ public sealed class DinnerReservation : Entity<DinnerReservationId>
     public static DinnerReservation Create(
         int guestCount,
         ReservationStatus reservationStatus,
-        GustId guestId,
+        GuestId guestId,
         BillId billId, 
         DateTime arrivalDateTime)
     {

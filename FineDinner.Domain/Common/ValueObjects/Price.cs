@@ -14,6 +14,7 @@ public sealed class Price : ValueObject
         Amount = amount;
         Currency = currency;
     }
+
     public static Price CreateNew(
         double amount,
         string currency)

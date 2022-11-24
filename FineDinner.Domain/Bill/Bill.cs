@@ -2,6 +2,7 @@ using FineDinner.Domain.Bill.ValueObjects;
 using FineDinner.Domain.Common.Models;
 using FineDinner.Domain.Common.ValueObjects;
 using FineDinner.Domain.Dinner.ValueObjects;
+using FineDinner.Domain.Guest.ValueObjects;
 using FineDinner.Domain.Host.ValueObjects;
 
 namespace FineDinner.Domain.Bill;

@@ -33,11 +33,9 @@ public class RegisterCommandHandler :
         // 2. Create a user (generate a unique id) & persist to DB
         var newUser = User.Create(
             command.FirstName,
-             command.LastName,
-             command.Email,
-             command.Password,
-             DateTime.UtcNow,
-             DateTime.UtcNow
+            command.LastName,
+            command.Email,
+            command.Password
         );
         _userRepository.AddUser(newUser);
 

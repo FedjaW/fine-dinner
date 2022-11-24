@@ -5,7 +5,6 @@ namespace FineDinner.Domain.User;
 
 public sealed class User : AggregateRoot<UserId>
 {
-    // public Guid Id { get; set; } = Guid.NewGuid();
     public string FirstName { get; set; } = null!;
     public string LastName { get; set; } = null!;
     public string Email { get; set; } = null!;
@@ -38,9 +37,7 @@ public sealed class User : AggregateRoot<UserId>
         string firstName,
         string lastName,
         string email,
-        string password,
-        DateTime createdDateTime,
-        DateTime updatedDateTime)
+        string password)
     {
         return new User(
             UserId.CreateUnique(),
