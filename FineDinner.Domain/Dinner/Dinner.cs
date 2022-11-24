@@ -1,4 +1,5 @@
 using FineDinner.Domain.Common.Models;
+using FineDinner.Domain.Common.ValueObjects;
 using FineDinner.Domain.Dinner.Entities;
 using FineDinner.Domain.Dinner.ValueObjects;
 

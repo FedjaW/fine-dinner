@@ -1,9 +1,8 @@
 using FineDinner.Domain.Common.Models;
-using FineDinner.Domain.Dinner.ValueObjects;
 
-namespace FineDinner.Domain.Dinner.Entities;
+namespace FineDinner.Domain.Common.ValueObjects;
 
-public sealed class Location : Entity<LocationId>
+public sealed class Location : ValueObject
 {
     public string Name { get; }
     public string Address { get; }
@@ -11,12 +10,10 @@ public sealed class Location : Entity<LocationId>
     public float Longitude { get; }
 
     private Location(
-        LocationId locationId,
         string name,
         string address,
         float latitude,
         float longitude)
-        : base(locationId)
     {
         Name = name;
         Address = address;
@@ -24,17 +21,24 @@ public sealed class Location : Entity<LocationId>
         Longitude = longitude;
     }
 
-    public static Location Create(
+    public static Location CreateNew(
         string name,
         string address,
         float latitude,
         float longitude)
     {
-        return new(
-            LocationId.CreateUnique(),
+        return new Location(
             name,
             address,
             latitude,
             longitude);
+    }
+
+    public override IEnumerable<object> GetEqualityComponents()
+    {
+        yield return Name;
+        yield return Address;
+        yield return Latitude;
+        yield return Longitude;
     }
 }

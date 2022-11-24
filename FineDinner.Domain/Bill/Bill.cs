@@ -1,6 +1,6 @@
 using FineDinner.Domain.Bill.ValueObjects;
 using FineDinner.Domain.Common.Models;
-using FineDinner.Domain.Dinner.Entities;
+using FineDinner.Domain.Common.ValueObjects;
 using FineDinner.Domain.Dinner.ValueObjects;
 using FineDinner.Domain.Host.ValueObjects;
 
