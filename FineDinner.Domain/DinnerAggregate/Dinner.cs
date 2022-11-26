@@ -80,5 +80,4 @@ public sealed class Dinner : AggregateRoot<DinnerId>
             DateTime.UtcNow,
             DateTime.UtcNow);
     }
-
 }

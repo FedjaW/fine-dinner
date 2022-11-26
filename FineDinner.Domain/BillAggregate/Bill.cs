@@ -12,7 +12,7 @@ public sealed class Bill : AggregateRoot<BillId>
     public DinnerId DinnerId { get; }
     public GuestId GuestId { get; }
     public HostId HostId { get; }
-    public Price Price { get; } // move Price Type to common folder
+    public Price Price { get; }
     public DateTime CreatedDateTime { get; }
     public DateTime UpdatedDateTime { get; }
 

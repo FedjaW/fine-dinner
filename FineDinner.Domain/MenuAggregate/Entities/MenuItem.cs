@@ -18,7 +18,6 @@ public sealed class MenuItem : Entity<MenuItemId>
         Description = description;
     }
 
-    // static factory method
     public static MenuItem Create(
         string name,
         string description)
