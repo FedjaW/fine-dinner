@@ -1,5 +1,4 @@
 using FineDinner.Application.Authentication.Commands.Register;
-using FineDinner.Application.Authentication.Common;
 using FineDinner.Application.Authentication.Queries.Login;
 using FineDinner.Contracts.Authentication;
 using MapsterMapper;

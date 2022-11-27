@@ -1,7 +1,8 @@
 namespace FineDinner.Contracts.Authentication;
 
 public record AuthenticationResponse(
-    Guid Id,
+    
+    // Guid UserId,
     string FirstName,
     string LastName,
     string Email,
