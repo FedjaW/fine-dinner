@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using FineDinner.Application.Common.Errors;
 using Microsoft.AspNetCore.Diagnostics;
-using FineDinner.Application.Common.Errors;
+using Microsoft.AspNetCore.Mvc;
 
 namespace FineDinner.Api.Controllers;
 
@@ -16,7 +16,7 @@ public class ErrorsController : ApiController
         var (statusCode, message) = exception switch
         {
             IServiceException serviceException => ((int)serviceException.StatusCode, serviceException.ErrorMessage),
-            _ => (StatusCodes.Status500InternalServerError, "An unexcepted error occured.")
+            _ => (StatusCodes.Status500InternalServerError, "An unexcepted error occured."),
         };
 
         return Problem(title: message, statusCode: statusCode);

@@ -50,7 +50,7 @@ public sealed class Menu : AggregateRoot<MenuId>
     {
         return new Menu(
             MenuId.CreateUnique(),
-            name, 
+            name,
             description,
             averageRating,
             hostId,

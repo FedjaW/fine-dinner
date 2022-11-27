@@ -1,4 +1,3 @@
-
 using ErrorOr;
 using FluentValidation;
 using MediatR;
@@ -35,11 +34,12 @@ public class ValidationBehavior<TRequest, TResponse> :
         }
 
         var errors = validationResult.Errors
-            .ConvertAll(validationFailure => Error.Validation
-                (validationFailure.PropertyName,
-                validationFailure.ErrorMessage));
+            .ConvertAll(validationFailure => Error.Validation(
+                    validationFailure.PropertyName,
+                    validationFailure.ErrorMessage));
 
         return (dynamic)errors;
+
         // Note: in runtime dynamic will try to convert the erros list to an ErrorOr object.
         // If it can not convert, it will throw a runtime-exception.
         // You usually don't want to use dynamic unless you know what you're doing.

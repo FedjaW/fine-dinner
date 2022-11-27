@@ -2,7 +2,7 @@ using FineDinner.Api;
 using FineDinner.Application;
 using FineDinner.Infrastructure;
 
-# region Dependency Injection
+// Dependency Injection
 var builder = WebApplication.CreateBuilder(args);
 {
     builder.Services.
@@ -10,9 +10,8 @@ var builder = WebApplication.CreateBuilder(args);
         AddApplication().
         AddInfrastructure(builder.Configuration);
 }
-# endregion
 
-# region Request Pipeline
+// Request Pipeline
 var app = builder.Build();
 {
     if (app.Environment.IsDevelopment())
@@ -29,4 +28,3 @@ var app = builder.Build();
     app.MapControllers();
     app.Run();
 }
-#endregion

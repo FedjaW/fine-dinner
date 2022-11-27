@@ -5,15 +5,14 @@ namespace FineDinner.Domain.UserAggregate;
 
 public sealed class User : AggregateRoot<UserId>
 {
+    // Hint: null! -> null forgiving operator
+    // See: https://stackoverflow.com/questions/54724304/what-does-null-statement-mean
     public string FirstName { get; set; } = null!;
     public string LastName { get; set; } = null!;
     public string Email { get; set; } = null!;
     public string Password { get; set; } = null!;
     public DateTime CreatedDateTime { get; }
     public DateTime UpdatedDateTime { get; }
-
-    // Hint: null! -> null forgiving operator
-    // See: https://stackoverflow.com/questions/54724304/what-does-null-statement-mean
 
     private User(
         UserId userId,
@@ -22,8 +21,8 @@ public sealed class User : AggregateRoot<UserId>
         string email,
         string password,
         DateTime createdDateTime,
-        DateTime updatedDateTime
-    ) : base(userId)
+        DateTime updatedDateTime)
+        : base(userId)
     {
         FirstName = firstName;
         LastName = lastName;
