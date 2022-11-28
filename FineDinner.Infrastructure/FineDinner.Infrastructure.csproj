@@ -5,10 +5,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.25.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.1" />
     <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="1.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.11" />
+
+    <!-- DO NOT USE THIS PACKAGE! -->
+    <!-- https://github.com/dotnet/aspnetcore/issues/39181  -->
+    <!-- <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.25.0" /> -->
   </ItemGroup>
 
 </Project>
