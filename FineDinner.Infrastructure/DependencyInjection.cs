@@ -1,10 +1,12 @@
 using System.Text;
+
 using FineDinner.Application.Common.Interfaces.Authentication;
 using FineDinner.Application.Common.Interfaces.Persitence;
 using FineDinner.Application.Common.Interfaces.Services;
 using FineDinner.Infrastructure.Authentication;
 using FineDinner.Infrastructure.Persistence;
 using FineDinner.Infrastructure.Services;
+
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -54,7 +56,7 @@ public static class DependencyInjection
 }
 
 // --------------------------------------------------------------------------------------------------------
-// Learnings: Singleton vs. Static class
+// Learning: Singleton vs. Static class
 // --------------------------------------------------------------------------------------------------------
 // A singleton allows access to a single created instance 
 // - that instance (or rather, a reference to that instance) can be passed as a parameter to other methods,
